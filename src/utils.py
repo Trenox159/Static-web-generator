@@ -142,7 +142,7 @@ def extract_title(markdown):
     matches = regex.findall(markdown)
     return matches[0]
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     print(f'Generating page from {from_path} to {dest_path} using {template_path}')
 
     with open(from_path, 'r') as file:
@@ -156,7 +156,7 @@ def generate_page(from_path, template_path, dest_path):
 
     title = extract_title(content_from_path)
     
-    content_template_path = content_template_path.replace(r'{{ Title }}', title).replace(r'{{ Content }}', html)
+    content_template_path = content_template_path.replace(r'{{ Title }}', title).replace(r'{{ Content }}', html).replace(r'href="/', f'href="{basepath}').replace(r'src="/', f'src="{basepath}')
 
     with open(dest_path, 'w') as file:
         file.write(content_template_path)
