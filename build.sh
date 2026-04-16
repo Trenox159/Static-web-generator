@@ -1,1 +1,1 @@
-python3 src/main.py 'https://github.com/Trenox159/Static-web-generator.git/'
+python3 src/main.py '/https://github.com/Trenox159/Static-web-generator.git/'
